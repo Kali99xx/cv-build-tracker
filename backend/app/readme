@@ -1,0 +1,2 @@
+flask db migrate -m "add new table"
+flask db upgrade
