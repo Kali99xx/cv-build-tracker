@@ -1,180 +1,162 @@
-# CV Build Tracker
+# CV Build Tracker 🚀
 
-A modern web application for tracking and managing your job applications and CV building process. Built with React, Flask, and PostgreSQL.
+![CV Build Tracker](https://img.shields.io/badge/CV_Build_Tracker-v1.0.0-blue.svg)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/Kali99xx/cv-build-tracker)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## 🚀 Features
+Welcome to the **CV Build Tracker** repository! This modern web application helps you track and manage your job applications and CV building process. It combines the power of **React**, **Flask**, and **PostgreSQL** to deliver a seamless experience.
 
-- **Application Tracking**: Track job applications, interviews, and follow-ups
-- **CV Management**: Manage multiple CV versions and track their performance
-- **Interactive Dashboard**: Visualize your application statistics and success rates
-- **Drag-and-Drop Interface**: Intuitive job application status management
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Real-time Updates**: Instant feedback on application status changes
-- **Data Visualization**: Charts and graphs for application analytics
+## Table of Contents
 
-## 🏗️ Tech Stack
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-### Frontend
-- React 18
-- Redux Toolkit for state management
-- Material-UI and Tailwind CSS for styling
-- React Router for navigation
-- React Beautiful DnD for drag-and-drop functionality
-- Chart.js for data visualization
-- Axios for API communication
-- React Toastify for notifications
+## Features 🌟
 
-### Backend
-- Flask (Python)
-- SQLAlchemy ORM
-- PostgreSQL database
-- Flask-Migrate for database migrations
-- Flask-CORS for cross-origin resource sharing
-- Alembic for database version control
+- **Track Job Applications**: Easily monitor your job applications and their statuses.
+- **CV Builder**: Create and manage your CV in a user-friendly interface.
+- **Responsive Design**: Works well on both desktop and mobile devices.
+- **Real-time Updates**: Get immediate feedback on your applications and CV changes.
+- **User Authentication**: Secure login and user management.
 
-## 🛠️ Prerequisites
+## Tech Stack 🛠️
 
-- Node.js (v16 or higher)
-- Python 3.8 or higher
-- PostgreSQL
-- Git
+This project utilizes a range of technologies:
 
-## 📦 Installation
+- **Frontend**: 
+  - React
+  - Redux
+  - Tailwind CSS
 
-### Backend Setup
+- **Backend**:
+  - Flask
+  - Flask-CORS
+  - Flask-Migrate
+  - SQLAlchemy
 
-1. Navigate to the backend directory:
+- **Database**:
+  - PostgreSQL
+
+- **Others**:
+  - Node.js
+  - ORM
+
+## Installation 🛠️
+
+To set up the project locally, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Kali99xx/cv-build-tracker.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd cv-build-tracker
+   ```
+
+3. **Install the backend dependencies**:
+
+   Navigate to the backend folder and install the required packages:
+
    ```bash
    cd backend
-   ```
-
-2. Create and activate a virtual environment:
-   ```bash
-   # Windows
-   python -m venv env
-   .\env\Scripts\activate
-
-   # Unix/MacOS
-   python3 -m venv env
-   source env/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
    pip install -r requirements.txt
    ```
 
-4. Set up environment variables:
-   Create a `.env` file in the backend directory with the following variables:
-   ```
-   FLASK_APP=run.py
-   FLASK_ENV=development
-   DATABASE_URL=postgresql://username:password@localhost:5432/cv_tracker
-   SECRET_KEY=your-secret-key
-   ```
+4. **Set up the database**:
 
-5. Initialize the database:
+   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `config.py` file.
+
+5. **Run database migrations**:
+
    ```bash
    flask db upgrade
    ```
 
-6. Run the backend server:
+6. **Start the backend server**:
+
    ```bash
    flask run
    ```
 
-### Frontend Setup
+7. **Install the frontend dependencies**:
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+   Navigate to the frontend folder and install the required packages:
 
-2. Install dependencies:
    ```bash
+   cd ../frontend
    npm install
    ```
 
-3. Create a `.env` file in the frontend directory:
-   ```
-   REACT_APP_API_URL=http://localhost:5000
-   ```
+8. **Start the frontend server**:
 
-4. Start the development server:
    ```bash
    npm start
    ```
 
-## 🚀 Running the Application
+Now, you can access the application at `http://localhost:3000`.
 
-1. Start the backend server (from the backend directory):
+## Usage 📖
+
+Once the application is running, you can create an account or log in. Here are some key functionalities:
+
+- **Add Job Applications**: Use the "Add Application" button to input details about your job applications.
+- **Edit CV**: Navigate to the CV section to add or modify your CV details.
+- **Track Status**: View the status of your applications on the dashboard.
+
+For a more detailed guide, refer to the [documentation](#).
+
+## Contributing 🤝
+
+We welcome contributions! To contribute to the CV Build Tracker, please follow these steps:
+
+1. **Fork the repository**.
+2. **Create a new branch**:
+
    ```bash
-   flask run
+   git checkout -b feature/YourFeature
    ```
 
-2. Start the frontend development server (from the frontend directory):
+3. **Make your changes** and commit them:
+
    ```bash
-   npm start
+   git commit -m "Add your feature"
    ```
 
-3. Access the application at `http://localhost:3000`
+4. **Push to the branch**:
 
-## 🧪 Testing
+   ```bash
+   git push origin feature/YourFeature
+   ```
 
-### Backend Tests
-```bash
-cd backend
-python -m pytest
-```
+5. **Open a pull request**.
 
-### Frontend Tests
-```bash
-cd frontend
-npm test
-```
+## License 📜
 
-## 📁 Project Structure
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```
-cv-build-tracker/
-├── backend/
-│   ├── app/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── services/
-│   ├── migrations/
-│   ├── requirements.txt
-│   └── run.py
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── redux/
-│   │   ├── services/
-│   │   └── utils/
-│   ├── package.json
-│   └── tailwind.config.js
-└── README.md
-```
+## Contact 📬
 
-## 🤝 Contributing
+For questions or suggestions, feel free to reach out:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- **Email**: your-email@example.com
+- **GitHub**: [Kali99xx](https://github.com/Kali99xx)
 
-## 📝 License
+## Releases 📦
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+You can download the latest release of the CV Build Tracker [here](https://github.com/Kali99xx/cv-build-tracker/releases). Follow the instructions to execute the downloaded files.
 
-## 👥 Authors
+Check the **Releases** section for updates and new features.
 
-- Your Name - Initial work
+---
 
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who have helped shape this project
-- Inspired by the need for better job application tracking tools 
+Thank you for your interest in the CV Build Tracker! We hope it helps you streamline your job application process and build an impressive CV. Happy job hunting!
