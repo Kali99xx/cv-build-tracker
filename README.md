@@ -110,7 +110,7 @@ To set up the project locally, follow these steps:
 
 4. **Set up the database**:
 
-   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `app/config.py` file.
+   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `backend/app/config.py` file.
 
    ```sql
    CREATE DATABASE cv_tracker;
