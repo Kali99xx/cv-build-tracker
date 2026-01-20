@@ -129,19 +129,26 @@ This installs all necessary Python packages including Flask, SQLAlchemy, and Pos
 
 2. **Update database configuration:**
 
-   Open `backend/app/config.py` and update the database connection string. The config already uses environment variables for security:
+   Open `backend/app/config.py` and review the database connection string. The config uses environment variables for security:
 
    ```python
-   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/job_hunting')
+   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://postgres:root@localhost:5432/job_hunting')
    ```
 
-   You can either:
-   - **Set an environment variable** (recommended): `export DATABASE_URL='postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/job_hunting'`
-   - **Edit the default value** in config.py: Replace `YOUR_USERNAME` and `YOUR_PASSWORD` with your actual PostgreSQL credentials
+   The default fallback uses `postgres` as username and `root` as password, but **you should change these** for security.
    
-   **Important**: Never commit real database credentials to version control. Use environment variables in production.
+   **Recommended approach** - Set an environment variable:
+   ```bash
+   export DATABASE_URL='postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/job_hunting'
+   ```
    
-   The default database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
+   Replace `YOUR_USERNAME` and `YOUR_PASSWORD` with your actual PostgreSQL credentials.
+   
+   **Alternative approach** - Edit the default value in config.py, but remember to use environment variables in production.
+   
+   **Important**: Never commit real database credentials to version control. Use environment variables, especially in production environments.
+   
+   The database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
 
 #### Step 2.4: Initialize the Database
 
