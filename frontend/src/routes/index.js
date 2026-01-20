@@ -8,6 +8,7 @@ import Tracker from "../pages/tracker";
 import Layout from "./layout";
 import { Resume } from "../pages/tracker/resume";
 import { Home } from "../pages/tracker/home";
+import Projects from "../pages/tracker/projects";
 import Login from "../pages/login";
 import Register from "../pages/register";
 import ProtectedRoute from "../compenents/ProtectedRoute";
@@ -25,6 +26,7 @@ const RootRouter = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="tracker" element={<Tracker />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="projects" element={<Projects />} />
           </Route>
           <Route path="resume" element={<Resume />} />
           <Route
