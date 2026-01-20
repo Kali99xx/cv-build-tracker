@@ -243,7 +243,7 @@ You should see the CV Build Tracker application in your browser!
 #### Issue: Port already in use
 
 **Solution**:
-- Backend: Change the port in `backend/run.py` (look for `app.run(... port=5000 ...)` and change to a different port)
+- Backend: Change the port in `backend/run.py` (look for the line with `app.run(host='...', port=5000, ...)` and change `port=5000` to a different port like `port=5001`)
 - Frontend: React will automatically prompt you to use a different port
 
 #### Issue: CORS errors in the browser
