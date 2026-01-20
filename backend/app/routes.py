@@ -369,8 +369,7 @@ def addTechInfo():
 
 def allowed_file(filename):
     """Check if the file extension is allowed"""
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
 
 @track.route("/upload-project", methods=["POST"])
 @jwt_required()

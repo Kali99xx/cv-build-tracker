@@ -9,6 +9,7 @@ const Projects = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const fileInputRef = React.useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -81,8 +82,10 @@ const Projects = () => {
         setFile(null);
         setProjectName("");
         setDescription("");
-        // Reset file input
-        document.getElementById("fileInput").value = "";
+        // Reset file input using ref
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
         // Refresh projects list
         fetchProjects();
       } else {
@@ -202,7 +205,7 @@ const Projects = () => {
                 Source Code File *
               </label>
               <input
-                id="fileInput"
+                ref={fileInputRef}
                 type="file"
                 onChange={handleFileChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
