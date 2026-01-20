@@ -6,6 +6,31 @@
 
 Welcome to the **CV Build Tracker** repository! This modern web application helps you track and manage your job applications and CV building process. It combines the power of **React**, **Flask**, and **PostgreSQL** to deliver a seamless experience.
 
+## 🚀 New to the Project?
+
+**Looking to get started?** Check out our comprehensive [**Getting Started Guide**](GETTING_STARTED.md) for detailed, step-by-step instructions on setting up and running the application.
+
+### Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Kali99xx/cv-build-tracker.git
+cd cv-build-tracker
+
+# 2. Set up the backend
+cd backend
+pip install -r requirements.txt
+flask db upgrade
+flask run
+
+# 3. Set up the frontend (in a new terminal)
+cd ../frontend
+npm install
+npm start
+```
+
+Visit `http://localhost:3000` to see the app! For detailed instructions and troubleshooting, see [GETTING_STARTED.md](GETTING_STARTED.md).
+
 ## Table of Contents
 
 - [Features](#features)
@@ -51,6 +76,17 @@ This project utilizes a range of technologies:
 
 To set up the project locally, follow these steps:
 
+> 📚 **For detailed, step-by-step instructions including prerequisites, troubleshooting, and more, see our [Getting Started Guide](GETTING_STARTED.md).**
+
+### Prerequisites
+
+- Python 3.8+
+- Node.js 14+ and npm
+- PostgreSQL 12+
+- Git
+
+### Setup Steps
+
 1. **Clone the repository**:
 
    ```bash
@@ -74,7 +110,13 @@ To set up the project locally, follow these steps:
 
 4. **Set up the database**:
 
-   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `config.py` file.
+   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `backend/app/config.py` file if needed.
+
+   ```sql
+   CREATE DATABASE job_hunting;
+   ```
+
+   Note: The default database name in `config.py` is `job_hunting`, but you can use any name you prefer.
 
 5. **Run database migrations**:
 
@@ -88,7 +130,7 @@ To set up the project locally, follow these steps:
    flask run
    ```
 
-7. **Install the frontend dependencies**:
+7. **Install the frontend dependencies** (in a new terminal):
 
    Navigate to the frontend folder and install the required packages:
 
@@ -104,6 +146,8 @@ To set up the project locally, follow these steps:
    ```
 
 Now, you can access the application at `http://localhost:3000`.
+
+**Need help?** Check the [Troubleshooting section](GETTING_STARTED.md#troubleshooting) in the Getting Started Guide.
 
 ## Usage 📖
 
