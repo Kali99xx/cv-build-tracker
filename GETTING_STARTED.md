@@ -225,7 +225,7 @@ You should see the CV Build Tracker application in your browser!
 **Solution**: 
 - Verify PostgreSQL is running: `psql -U postgres`
 - Check database credentials in `backend/app/config.py`
-- Ensure the database exists: `CREATE DATABASE cv_tracker;`
+- Ensure the database exists: `CREATE DATABASE job_hunting;`
 
 #### Issue: Port already in use
 
