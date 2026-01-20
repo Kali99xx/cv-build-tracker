@@ -132,12 +132,14 @@ This installs all necessary Python packages including Flask, SQLAlchemy, and Pos
    Open `backend/app/config.py` and update the database connection string. The config already uses environment variables for security:
 
    ```python
-   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://username:password@localhost:5432/job_hunting')
+   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/job_hunting')
    ```
 
    You can either:
-   - **Set an environment variable**: `export DATABASE_URL='postgresql://username:password@localhost:5432/job_hunting'`
-   - **Edit the default value** in config.py: Replace `username` and `password` with your actual database credentials
+   - **Set an environment variable** (recommended): `export DATABASE_URL='postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/job_hunting'`
+   - **Edit the default value** in config.py: Replace `YOUR_USERNAME` and `YOUR_PASSWORD` with your actual PostgreSQL credentials
+   
+   **Important**: Never commit real database credentials to version control. Use environment variables in production.
    
    The default database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
 
@@ -246,8 +248,9 @@ You should see the CV Build Tracker application in your browser!
 #### Issue: "flask: command not found"
 
 **Solution**: 
-- Make sure your virtual environment is activated
-- Install Flask: `pip install Flask`
+- Make sure your virtual environment is activated (you should see `(venv)` in your terminal prompt)
+- Verify requirements are installed: `pip install -r requirements.txt`
+- If still not working, try: `python -m flask --version` to check if Flask is installed
 
 #### Issue: npm install fails
 
