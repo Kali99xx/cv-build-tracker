@@ -114,14 +114,14 @@ This installs all necessary Python packages including Flask, SQLAlchemy, and Pos
    # Log into PostgreSQL
    psql -U postgres
    
-   # Create database
-   CREATE DATABASE cv_tracker;
+   # Create database (using default name from config)
+   CREATE DATABASE job_hunting;
    
    # Create user (optional)
    CREATE USER cv_user WITH PASSWORD 'your_password';
    
    # Grant privileges
-   GRANT ALL PRIVILEGES ON DATABASE cv_tracker TO cv_user;
+   GRANT ALL PRIVILEGES ON DATABASE job_hunting TO cv_user;
    
    # Exit PostgreSQL
    \q
@@ -132,10 +132,10 @@ This installs all necessary Python packages including Flask, SQLAlchemy, and Pos
    Open `backend/app/config.py` and update the database connection string:
 
    ```python
-   SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/cv_tracker'
+   SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/job_hunting'
    ```
 
-   Replace `username`, `password`, and `cv_tracker` with your actual database credentials.
+   Replace `username` and `password` with your actual database credentials. The default database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
 
 #### Step 2.4: Initialize the Database
 
@@ -281,7 +281,7 @@ Now that you have the application running, here are some things you can do:
   - `frontend/src/` - React components and pages
   
 - **Make changes**:
-  - See [CONTRIBUTING.md](README.md#contributing) for contribution guidelines
+  - See the [Contributing section](README.md#contributing-) in the README for contribution guidelines
   - Create a new branch for your feature: `git checkout -b feature/my-feature`
   
 - **Learn the tech stack**:

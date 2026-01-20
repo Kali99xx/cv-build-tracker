@@ -110,11 +110,13 @@ To set up the project locally, follow these steps:
 
 4. **Set up the database**:
 
-   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `backend/app/config.py` file.
+   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `backend/app/config.py` file if needed.
 
    ```sql
-   CREATE DATABASE cv_tracker;
+   CREATE DATABASE job_hunting;
    ```
+
+   Note: The default database name in `config.py` is `job_hunting`, but you can use any name you prefer.
 
 5. **Run database migrations**:
 
