@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "../utils/axios";
+import { toast } from "react-toastify";
 
 export default function UploadProjectModal({ setOpen }) {
   const [formData, setFormData] = useState({
@@ -20,12 +21,12 @@ export default function UploadProjectModal({ setOpen }) {
   const handleSubmit = async () => {
     // Form Validation
     if (!formData.project_name) {
-      alert("Project name is required.");
+      toast.error("Project name is required.");
       return;
     }
     
     if (!file) {
-      alert("Please select a file to upload.");
+      toast.error("Please select a file to upload.");
       return;
     }
 
@@ -43,11 +44,11 @@ export default function UploadProjectModal({ setOpen }) {
         },
       });
       
-      alert("Project uploaded successfully!");
+      toast.success("Project uploaded successfully!");
       setOpen(false);
     } catch (error) {
       console.error("Error uploading project:", error);
-      alert(error.response?.data?.error || "Failed to upload project");
+      toast.error(error.response?.data?.error || "Failed to upload project");
     } finally {
       setUploading(false);
     }

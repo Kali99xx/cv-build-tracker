@@ -175,7 +175,6 @@ const Tracker = () => {
           {isOpenViewProjectsModal && (
             <ViewProjectsModal setOpen={setIsOpenViewProjectsModal} />
           )}
-          +
         </div>
       ) : (
         <Loader />

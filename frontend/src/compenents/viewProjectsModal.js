@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "../utils/axios";
+import { toast } from "react-toastify";
 
 export default function ViewProjectsModal({ setOpen }) {
   const [projects, setProjects] = useState([]);
@@ -16,7 +17,7 @@ export default function ViewProjectsModal({ setOpen }) {
       setLoading(false);
     } catch (error) {
       console.error("Error fetching projects:", error);
-      alert("Failed to fetch projects");
+      toast.error("Failed to fetch projects");
       setLoading(false);
     }
   };
@@ -28,11 +29,11 @@ export default function ViewProjectsModal({ setOpen }) {
 
     try {
       await axios.delete(`/delete-project/${projectId}`);
-      alert("Project deleted successfully!");
+      toast.success("Project deleted successfully!");
       fetchProjects(); // Refresh the list
     } catch (error) {
       console.error("Error deleting project:", error);
-      alert(error.response?.data?.error || "Failed to delete project");
+      toast.error(error.response?.data?.error || "Failed to delete project");
     }
   };
 
