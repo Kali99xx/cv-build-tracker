@@ -2,11 +2,13 @@ from flask import Blueprint, jsonify
 from flask import request
 from flask import Response
 from .config import Config
-from .models import Steps, Users, Items, Accounts, Account_Users, Techs
+from .models import Steps, Users, Items, Accounts, Account_Users, Techs, Projects
 from starlette import status
 from .extensions import db, bcrypt, jwt
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
+from werkzeug.utils import secure_filename
+import os
 
 track = Blueprint('track', __name__)
 
@@ -363,4 +365,138 @@ def addTechInfo():
 
     except Exception as e:
         db.session.rollback()  # Rollback in case of an error
+        return jsonify({"error": str(e)}), 500
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
+
+@track.route("/upload-project", methods=["POST"])
+@jwt_required()
+def upload_project():
+    try:
+        user_identity = get_jwt_identity()
+        user = Users.query.filter(Users.id==user_identity).first()
+        
+        # Check if file is in request
+        if 'file' not in request.files:
+            return jsonify({"error": "No file part"}), 400
+        
+        file = request.files['file']
+        project_name = request.form.get('project_name')
+        description = request.form.get('description', '')
+        
+        if file.filename == '':
+            return jsonify({"error": "No selected file"}), 400
+        
+        if not project_name:
+            return jsonify({"error": "Project name is required"}), 400
+        
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            
+            # Create uploads directory if it doesn't exist
+            upload_folder = Config.UPLOAD_FOLDER
+            if not os.path.exists(upload_folder):
+                os.makedirs(upload_folder)
+            
+            # Create user-specific directory
+            user_folder = os.path.join(upload_folder, str(user.id))
+            if not os.path.exists(user_folder):
+                os.makedirs(user_folder)
+            
+            # Save file
+            file_path = os.path.join(user_folder, filename)
+            file.save(file_path)
+            file_size = os.path.getsize(file_path)
+            
+            # Store in database
+            new_project = Projects(
+                user_id=user.id,
+                project_name=project_name,
+                description=description,
+                file_name=filename,
+                file_path=file_path,
+                file_size=file_size
+            )
+            
+            db.session.add(new_project)
+            db.session.commit()
+            
+            return jsonify({
+                "message": "Project uploaded successfully!",
+                "project": {
+                    "id": new_project.id,
+                    "project_name": new_project.project_name,
+                    "description": new_project.description,
+                    "file_name": new_project.file_name,
+                    "file_size": new_project.file_size,
+                    "created_at": new_project.created_at
+                }
+            }), 201
+        else:
+            return jsonify({"error": "File type not allowed"}), 400
+    
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
+
+@track.route("/get-projects", methods=["GET"])
+@jwt_required()
+def get_projects():
+    try:
+        user_identity = get_jwt_identity()
+        user = Users.query.filter(Users.id==user_identity).first()
+        
+        if user.role == 0:  # Admin
+            projects = Projects.query.all()
+        else:  # Regular user
+            projects = Projects.query.filter_by(user_id=user.id).all()
+        
+        projects_list = [
+            {
+                "id": project.id,
+                "project_name": project.project_name,
+                "description": project.description,
+                "file_name": project.file_name,
+                "file_size": project.file_size,
+                "created_at": project.created_at,
+                "updated_at": project.updated_at,
+                "user": project.user.name
+            }
+            for project in projects
+        ]
+        
+        return jsonify(projects_list), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@track.route("/delete-project/<int:project_id>", methods=["DELETE"])
+@jwt_required()
+def delete_project(project_id):
+    try:
+        user_identity = get_jwt_identity()
+        user = Users.query.filter(Users.id==user_identity).first()
+        
+        project = Projects.query.filter_by(id=project_id).first()
+        
+        if not project:
+            return jsonify({"error": "Project not found"}), 404
+        
+        # Check if user owns the project or is admin
+        if project.user_id != user.id and user.role != 0:
+            return jsonify({"error": "Unauthorized"}), 403
+        
+        # Delete file from filesystem
+        if os.path.exists(project.file_path):
+            os.remove(project.file_path)
+        
+        # Delete from database
+        db.session.delete(project)
+        db.session.commit()
+        
+        return jsonify({"message": "Project deleted successfully"}), 200
+    
+    except Exception as e:
+        db.session.rollback()
         return jsonify({"error": str(e)}), 500
