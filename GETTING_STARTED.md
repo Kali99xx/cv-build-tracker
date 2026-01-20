@@ -129,13 +129,17 @@ This installs all necessary Python packages including Flask, SQLAlchemy, and Pos
 
 2. **Update database configuration:**
 
-   Open `backend/app/config.py` and update the database connection string:
+   Open `backend/app/config.py` and update the database connection string. The config already uses environment variables for security:
 
    ```python
-   SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/job_hunting'
+   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://username:password@localhost:5432/job_hunting')
    ```
 
-   Replace `username` and `password` with your actual database credentials. The default database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
+   You can either:
+   - **Set an environment variable**: `export DATABASE_URL='postgresql://username:password@localhost:5432/job_hunting'`
+   - **Edit the default value** in config.py: Replace `username` and `password` with your actual database credentials
+   
+   The default database name is `job_hunting` as shown in the config file, but you can change it to your preferred name (e.g., `cv_tracker`).
 
 #### Step 2.4: Initialize the Database
 
@@ -230,7 +234,7 @@ You should see the CV Build Tracker application in your browser!
 #### Issue: Port already in use
 
 **Solution**:
-- Backend: Change the port in `backend/run.py`
+- Backend: Change the port in `backend/run.py` (look for `app.run(... port=5000 ...)` and change to a different port)
 - Frontend: React will automatically prompt you to use a different port
 
 #### Issue: CORS errors in the browser
