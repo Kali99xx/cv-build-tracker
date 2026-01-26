@@ -108,6 +108,14 @@ const Tracker = () => {
                       VIEW TECH INFO
                     </div>
                   </div>
+                  <div
+                    className="h-[50px] w-[200px] bg-purple-500 rounded-[20px] p-2 min-w-max"
+                    onClick={() => navigate("/projects")}
+                  >
+                    <div className="text-[white] flex items-center justify-center h-full font-semibold cursor-pointer">
+                      UPLOAD PROJECT
+                    </div>
+                  </div>
 
                   <div className="w-full"></div>
                   <div

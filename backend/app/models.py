@@ -52,3 +52,17 @@ class Techs(db.Model):
     video_source = db.Column(db.String(80), unique=False, nullable=False)
     job_role = db.Column(db.String(80), unique=False, nullable=False)
     job_des = db.Column(db.String(5000), unique=False, nullable=True)
+
+class Projects(db.Model):
+    __tablename__ = 'projects'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user = db.relationship('Users', backref=db.backref('projects', lazy=True))
+    project_name = db.Column(db.String(255), unique=False, nullable=False)
+    file_name = db.Column(db.String(255), unique=False, nullable=False)
+    file_path = db.Column(db.String(500), unique=False, nullable=False)
+    file_type = db.Column(db.String(50), unique=False, nullable=False)
+    file_size = db.Column(db.Integer, unique=False, nullable=False)
+    description = db.Column(db.String(1000), unique=False, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
